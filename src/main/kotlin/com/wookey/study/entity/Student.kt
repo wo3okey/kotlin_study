@@ -12,7 +12,8 @@ data class Student(
     val age: Int,
 
     @OneToOne
-    val majorType: Major
+    @JoinColumn(name="major")
+    val major: Major
 ) {
     companion object {
         fun notFoundStudent(): Student {

@@ -20,4 +20,9 @@ class StudentController(private val studentService: StudentService) {
     fun getStudentByName(@RequestParam(value = "name", defaultValue = Strings.EMPTY) name: String): Student {
         return studentService.getStudentByName(name)
     }
+
+    @GetMapping("/level")
+    fun getStudentMajorByMajorLevel(@RequestParam(value = "level", defaultValue = Strings.EMPTY) level: Int): String {
+        return studentService.getStudentMajorByMajorLevel(level).toString()
+    }
 }

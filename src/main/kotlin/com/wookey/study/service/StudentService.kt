@@ -18,4 +18,8 @@ class StudentService(
             .ofNullable(studentRepository.selectStudentByName(name))
             .orElse(Student.notFoundStudent())
     }
+
+    fun getStudentMajorByMajorLevel(level: Int): List<Any> {
+        return studentRepository.selectStudentMajorByMajorLevel(level)
+    }
 }

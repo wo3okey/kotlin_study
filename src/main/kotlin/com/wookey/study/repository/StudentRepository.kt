@@ -1,5 +1,6 @@
 package com.wookey.study.repository
 
+import com.querydsl.core.Tuple
 import com.querydsl.jpa.impl.JPAQueryFactory
 import com.wookey.study.entity.QMajor
 import com.wookey.study.entity.QStudent
@@ -26,11 +27,12 @@ class StudentRepository(
             .fetchOne()
     }
 
-//    fun selectStudentMajorByMajorLevel(level: Int): List<Any> {
-//        return jpaQueryFactory
-//            .from(student)
-//            .join(student.major, major)
-//            .where(major.level.eq(level))
-//            .fetch()
-//    }
+    fun selectStudentMajorByMajorLevel(level: Int): List<Any> {
+        return jpaQueryFactory
+            .select(student)
+            .from(student)
+            .innerJoin(student.major, major)
+            .where(major.level.eq(level))
+            .fetch()
+    }
 }
