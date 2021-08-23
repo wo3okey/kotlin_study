@@ -13,11 +13,15 @@ data class Student(
 
     @OneToOne
     @JoinColumn(name="major")
-    val major: Major
+    val major: Major,
+
+    @OneToMany(fetch = FetchType.EAGER)
+    @JoinColumn(name="buy_std")
+    val payBookList: List<PayBook>
 ) {
     companion object {
         fun notFoundStudent(): Student {
-            return Student(0, "notfound", 0, 0, Major.defaultMajor())
+            return Student(0, "notfound", 0, 0, Major.defaultMajor(), listOf())
         }
     }
 }
